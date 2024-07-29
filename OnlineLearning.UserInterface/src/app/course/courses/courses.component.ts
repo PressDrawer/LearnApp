@@ -23,8 +23,6 @@ export class CoursesComponent {
   }
 
   enroll(){
-    console.log("clicked");
-    debugger;
     if(this.auth.isLogedin){
     this.router.navigate(["enrollment"]);
     }else
@@ -37,6 +35,5 @@ export class CoursesComponent {
   ngOnInit(): void 
    {
     this.getCourses();
-   //console.log(this.stcourses);
    }
 }

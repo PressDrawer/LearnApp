@@ -18,7 +18,6 @@ export class AddCourseComponent {
     this.course.courseCategory = form.value.courseCategory,
     this.course.courseCategory = form.value.courseCategory
     this.courseService.createCourse(this.course).subscribe((res:any)=>{
-      decodeURI
       return res;
     })
   }

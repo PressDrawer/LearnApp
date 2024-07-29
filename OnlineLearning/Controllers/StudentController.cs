@@ -69,7 +69,6 @@ namespace OnlineLearning.Presentation.Controllers
         [HttpPut("{id}")]
         public async Task<ActionResult<Student>> Put(Guid id, [FromBody] StudentDto studentDto)
         {
-            //var _course = await _courseService.GetCourse(id);
             var student = new Student()
             {
                 Name = studentDto.Name,

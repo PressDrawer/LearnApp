@@ -48,8 +48,6 @@ namespace OnlineLearning.Presentation.Controllers
         [Authorize(Roles = "Admin")]
         public async Task<ActionResult<Course>> Post([FromBody] CourseDto coursedto)
         {
-            //if(_courseService.GetAllCourses().FirstOrDefaultAsync())
-           
                 var course = new Course()
                 {
                     //CourseId = new Guid(),
