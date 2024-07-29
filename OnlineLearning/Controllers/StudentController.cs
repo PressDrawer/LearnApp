@@ -44,7 +44,7 @@ namespace OnlineLearning.Presentation.Controllers
         [HttpPost("Register")]
         public async Task<ActionResult<Student>> Post([FromBody] StudentDto studentDto)
         {
-            //if(_courseService.GetAllCourses().FirstOrDefaultAsync())
+            
 
             var student = new Student()
             {
