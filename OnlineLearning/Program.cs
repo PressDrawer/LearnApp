@@ -9,6 +9,7 @@ using OnlineLearning.Application.Interfaces.ServiceInterfaces;
 using OnlineLearning.Application.Services;
 using OnlineLearning.Infrastructure.Data;
 using OnlineLearning.Infrastructure.Repositories;
+using OnlineLearning.Presentation.Middlewares;
 using System.Text;
 
 //var MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
@@ -22,19 +23,7 @@ builder.Services.AddCors(o => o.AddPolicy("MyPolicy", builder =>
            .AllowAnyHeader();
 }));
 
-//builder.Services.AddCors(options =>
-//{
-//    options.AddPolicy(name: MyAllowSpecificOrigins,
-//                      builder =>
-//                      {
-//                          builder.WithOrigins("http://localhost:4200",
-//                                              "http://www.contoso.com");
-//                      });
-//});
-
 builder.Services.AddControllers();
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
-
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen(opt =>
 {
@@ -113,6 +102,8 @@ if (app.Environment.IsDevelopment())
         //c.RoutePrefix = string.Empty; // Set Swagger UI at the root
     });
 }
+
+app.UseMiddleware<ExceptionHandlingMiddleware>();
 
 app.UseHttpsRedirection();
 
