@@ -30,7 +30,23 @@ namespace OnlineLearning.Presentation.Middlewares
         private static Task HandleExceptionAsync(HttpContext context, Exception exception)
         {
             var code = HttpStatusCode.InternalServerError; // 500 if unexpected
-            var result = Newtonsoft.Json.JsonConvert.SerializeObject(new { error = exception.Message });
+            var result = string.Empty;
+
+            if (exception is ArgumentNullException)
+            {
+                code = HttpStatusCode.BadRequest;
+                result = Newtonsoft.Json.JsonConvert.SerializeObject(new { error = "Bad request: " + exception.Message });
+            }
+            else if (exception is UnauthorizedAccessException)
+            {
+                code = HttpStatusCode.Unauthorized;
+                result = Newtonsoft.Json.JsonConvert.SerializeObject(new { error = "Unauthorized: " + exception.Message });
+            }
+            else
+            {
+                result = Newtonsoft.Json.JsonConvert.SerializeObject(new { error = "An unexpected error occurred: " + exception.Message });
+            }
+
             context.Response.ContentType = "application/json";
             context.Response.StatusCode = (int)code;
             return context.Response.WriteAsync(result);
