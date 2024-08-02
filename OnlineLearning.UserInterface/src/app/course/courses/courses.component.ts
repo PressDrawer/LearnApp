@@ -22,9 +22,9 @@ export class CoursesComponent {
     })
   }
 
-  enroll(){
-    if(this.auth.isLogedin){
-    this.router.navigate(["enrollment"]);
+  enroll(courseId:any){
+    if(this.auth.isLogedin){ 
+    this.router.navigate(["enrollment",courseId]);
     }else
     {
       this.router.navigate(["login"])

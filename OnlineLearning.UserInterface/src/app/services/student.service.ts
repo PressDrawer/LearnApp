@@ -19,6 +19,7 @@ export class StudentService {
   }
 
   public getStudent(id:string):Observable<any>{
+    
     return this.http.get<any>(this.url+id);
   }
 

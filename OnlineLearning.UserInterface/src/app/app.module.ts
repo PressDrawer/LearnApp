@@ -25,7 +25,7 @@ const routs : Routes=[
   {path:'profile', component:StudentComponent,canActivate:[AuthGuard]},
   {path:'login', component:LoginComponent},
   {path:'courses', component:CoursesComponent},
-  {path:'enrollment', component:EnrollmentComponent,canActivate:[AuthGuard]},
+  {path:'enrollment/:courseId', component:EnrollmentComponent,canActivate:[AuthGuard]},
   {path:'', component:CoursesComponent},
   {path:'admin',component:AdminComponent,canActivate:[AuthGuard], data: { role: 'Admin'}},
   {path:'addcourses',component:AddCourseComponent},

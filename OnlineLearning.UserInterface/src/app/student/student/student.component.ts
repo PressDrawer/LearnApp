@@ -4,6 +4,7 @@ import { studentProfile } from 'src/app/Models/studentProfile';
 import { Courseview } from 'src/app/Models/Courseview';
 import { pipe } from 'rxjs';
 import { AuthService } from 'src/app/services/auth/auth.service';
+import { Route, Router } from '@angular/router';
 //import { Guid } from "guid-typescript";
 @Component({
   selector: 'app-student',
@@ -12,7 +13,7 @@ import { AuthService } from 'src/app/services/auth/auth.service';
 })
 export class StudentComponent {
 
-  constructor(private studentService:StudentService,private authService:AuthService) {}
+  constructor(private studentService:StudentService,private authService:AuthService,private router:Router) {}
     
   //id:string="7BA238BC-3614-469B-DDC5-08DCAE07F9B2";
   studentprofile:studentProfile ={} as studentProfile
@@ -36,8 +37,16 @@ export class StudentComponent {
         
         this.stcourses=res;
         console.log(this.stcourses);
+        
       })
     }
+
+    logout(){
+      localStorage.removeItem('token');
+      this.authService.isLogedin = false;
+      this.router.navigate(['login']);
+    }
+
    ngOnInit(): void 
    {
     debugger;//=localStorage.getItem('userId')

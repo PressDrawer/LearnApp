@@ -113,7 +113,14 @@ namespace OnlineLearning.Infrastructure.Repositories
                                           Balance = e.Balance,
                                       };
 
-         
+            //var studentswithCoursesEager = _context.Students
+            //                                    .Include(s=>s.Enrollments)
+            //                                    .ThenInclude(e=>e.Course)
+            //                                    .Where(s=>s.StudentId== id)     
+            //                                    .ToList();  
+                                               //.Include(s=>s.Enrollments).ToList();
+            
+
             return await studentswithCourses.ToListAsync();
         }
 

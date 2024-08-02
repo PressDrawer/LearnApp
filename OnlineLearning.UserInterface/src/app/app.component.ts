@@ -26,5 +26,6 @@ export class AppComponent {
    {
     debugger;
     console.log(this.isLoggedin);
+    
    }
 }

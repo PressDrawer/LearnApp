@@ -12,6 +12,10 @@ export class CourseService {
 
   url = "https://localhost:7042/api/Course/courses"
 
+  getCourse(id:any):Observable<any>{
+    return this.http.get("https://localhost:7042/api/Course/"+id)
+  }
+
   getAllcourses():Observable<any>{
     return this.http.get(this.url)
   }

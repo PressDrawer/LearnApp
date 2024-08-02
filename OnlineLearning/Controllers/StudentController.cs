@@ -35,8 +35,9 @@ namespace OnlineLearning.Presentation.Controllers
         {
             if (ModelState.IsValid)
             {
-                var student = await _studentService.GetStudent(id);      
-                return Ok(student);
+                var student = await _studentService.GetStudent(id);  
+                if(student != null) return Ok(student);
+                return NotFound("No student founded");
             }
             return BadRequest();
         }
@@ -67,6 +68,7 @@ namespace OnlineLearning.Presentation.Controllers
         }
 
         [HttpPut("{id}")]
+        [Authorize]
         public async Task<ActionResult<Student>> Put(Guid id, [FromBody] StudentDto studentDto)
         {
             var student = new Student()
@@ -98,6 +100,7 @@ namespace OnlineLearning.Presentation.Controllers
 
         }
         [HttpGet("EnrolledCourses")]
+        [Authorize]
         public async Task<ActionResult<ICollection<CourseView>>> GetEnrolledCourse(Guid studentId)
         {
             var courses = await _studentService.GetEnrolledCources(studentId);
@@ -105,8 +108,8 @@ namespace OnlineLearning.Presentation.Controllers
         }
 
         [HttpPost("Enroll")]
-        //[Authorize]
-        public async Task<ActionResult<EnrollmentDto>> EnrollonCourse([FromQuery] EnrollmentDto enroll)
+        [Authorize]
+        public async Task<ActionResult<EnrollmentDto>> EnrollonCourse([FromBody] EnrollmentDto enroll)
         {
             enroll = await _studentService.EnrollCourses(enroll);
                 if (enroll != null) return Ok(enroll);

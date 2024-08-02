@@ -59,9 +59,10 @@
                                         </p>
                                         <hr>
                                         <div class="float-right">
-                                            <a class="btn btn-sm btn-outline-primary" href="#"><i class="icofont-headphone-alt"></i> HELP</a>
-                                            <button class="btn btn-sm btn-primary" (click)="enroll()"><i class="icofont-refresh"></i> ENROLL</button>
+                                            <a class="btn btn-sm btn-outline-primary" href="#"><i class="icofont-headphone-alt"></i> HELP </a>
+                                            <button class="btn btn-sm btn-primary" (click)="enroll(course.courseId)"><i class="icofont-refresh"></i> ENROLL</button>
                                         </div>
+                                        <p>{{course.courseId}}</p>
                                         <p class="mb-0 text-black text-primary pt-2"><span class="text-black font-weight-bold"> COURSE PRICE:</span> {{course.courseFee}}
                                         </p>
                                     </div>
